@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Job from "../components/Job.vue";
+import JobList from "../components/JobList.vue";
 import MiniHero from "../components/MiniHero.vue";
 import Newsletter from "../components/Newsletter.vue";
 </script>
@@ -10,7 +10,7 @@ import Newsletter from "../components/Newsletter.vue";
     text="Browse through our list of jobs, find your perfect match and apply."
   />
 
-  <Job :show-header="false" :show-more-btn="false" />
+  <JobList :show-header="false" :show-more-btn="false" />
 
   <Newsletter />
 </template>

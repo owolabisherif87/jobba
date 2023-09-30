@@ -7,7 +7,7 @@
         </div>
       </a>
       <button
-        class="navbar-toggler"
+        class="navbar-toggler border bg-primary"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarCollapse"

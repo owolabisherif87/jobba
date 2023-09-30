@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import Hero from "../components/Hero.vue";
-import Job from "../components/Job.vue";
+import JobList from "../components/JobList.vue";
 import Newsletter from "../components/Newsletter.vue";
 import Mentorship from "../components/Mentorship.vue";
+import Testimonial from "../components/Testimonial.vue";
 </script>
 
 <template>
@@ -12,7 +13,8 @@ import Mentorship from "../components/Mentorship.vue";
     primary-text="Learn more"
     :has-image="true"
   />
-  <Job />
+  <JobList />
   <Newsletter />
   <Mentorship />
+  <Testimonial />
 </template>

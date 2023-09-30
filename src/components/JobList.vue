@@ -89,7 +89,15 @@ const jobs = ref<Job[]>([
 
 <template>
   <div class="container-fluid bg-white px-5 pt-3">
-    <h2 class="my-3" v-if="showHeader">Browse our latest job opportunities.</h2>
+    <div v-if="showHeader">
+      <h2 class="mt-3">Browse our latest job opportunities.</h2>
+      <h4 class="lead mb-4 text-success">Get a job on jobba.</h4>
+    </div>
+    <div class="d-flex justify-content-end my-3" v-if="showMoreBtn">
+      <router-link to="/job" class="btn btn-primary"
+        >View more jobs</router-link
+      >
+    </div>
     <div class="row">
       <div class="col-sm-12 col-md-4" v-for="(job, index) in jobs">
         <Card
@@ -102,8 +110,8 @@ const jobs = ref<Job[]>([
         />
       </div>
     </div>
-    <div class="d-flex justify-content-end" v-if="showMoreBtn">
-      <router-link to="/about" class="btn btn-link">View more jobs</router-link>
+    <div class="d-flex justify-content-center mt-3" v-if="showMoreBtn">
+      <router-link to="/job" class="btn border">View more jobs</router-link>
     </div>
   </div>
 </template>

@@ -31,22 +31,6 @@ withDefaults(defineProps<Props>(), {
       <p class="lead mb-4 text-white">
         {{ text }}
       </p>
-      <!-- <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button
-          type="button"
-          class="btn btn-danger btn-lg px-4 gap-3"
-          v-if="hasPrimaryLink"
-        >
-          {{ primaryText }}
-        </button>
-        <button
-          type="button"
-          class="btn btn-outline-secondary btn-lg px-4"
-          v-if="hasSecondaryLink"
-        >
-          {{ secondaryText }}
-        </button>
-      </div> -->
     </div>
   </div>
 </template>
