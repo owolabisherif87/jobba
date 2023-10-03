@@ -13,7 +13,7 @@ import Testimonial from "../components/Testimonial.vue";
     primary-text="Learn more"
     :has-image="true"
   />
-  <JobList />
+  <JobList :show-pagination="false" />
   <Newsletter />
   <Mentorship />
   <Testimonial />

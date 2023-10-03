@@ -1,4 +1,4 @@
-export interface Location {
+export interface JobType {
     name: string
 }
 
@@ -19,13 +19,30 @@ export interface Business {
 }
 
 export interface Job {
-  business: Business
+  id?: number,
+  business: string
   title: string
   summary: string,
-  location: Location[]
+  type: string
+  location: string
   description: string
   permit: string
-  level: JobLevel[]
+  level: string
   salary?: string,
   url: string,
 }
+
+
+export interface JobForm {
+  business: string
+  title: string
+  type: string
+  location: string
+  description: string
+  permit: string
+  level: string
+  salary?: number,
+  url: string,
+}
+
+

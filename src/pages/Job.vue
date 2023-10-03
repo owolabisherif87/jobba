@@ -10,7 +10,11 @@ import Newsletter from "../components/Newsletter.vue";
     text="Browse through our list of jobs, find your perfect match and apply."
   />
 
-  <JobList :show-header="false" :show-more-btn="false" />
+  <JobList
+    :show-header="false"
+    :show-more-btn="false"
+    :show-pagination="true"
+  />
 
   <Newsletter />
 </template>
