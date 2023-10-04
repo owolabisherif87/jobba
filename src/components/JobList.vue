@@ -5,13 +5,14 @@ import Bootstrap5Pagination from "../components/Paginator.vue";
 import Card from "./Card.vue";
 import Loader from "./Loader.vue";
 import getJobs from "../composables/getJobs";
+import { useJobStore } from "../store/useJobStore";
 
 export interface Props {
   showHeader: boolean;
   showMoreBtn: boolean;
   showPagination: boolean;
   truncate?: boolean;
-  limit: number;
+  limit: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -19,10 +20,11 @@ const props = withDefaults(defineProps<Props>(), {
   showMoreBtn: true,
   showPagination: false,
   truncate: true,
-  limit: 6,
+  limit: true,
 });
 
 const loading = ref<boolean>(false);
+const { handleUpdateJobStore } = useJobStore();
 
 const paginator = ref<object>({
   type: Object,
@@ -38,6 +40,12 @@ const paginate = async (page = 1) => {
   paginator.value = res.data;
   jobs.value = res?.data.data;
 
+  if (props.limit) {
+    jobs.value.length = 3;
+  }
+
+  handleUpdateJobStore(res?.data.data);
+
   loading.value = false;
 };
 
@@ -50,17 +58,17 @@ const handleJobDescription = (description: string) => {
 
 <template>
   <div class="container-fluid bg-white px-5 pt-3">
-    <div v-if="props.showHeader">
+    <div v-if="props?.showHeader">
       <h2 class="mt-3">Browse our latest job opportunities.</h2>
       <h4 class="lead mb-4 text-success">Get a job on jobba.</h4>
     </div>
-    <div class="d-flex justify-content-end my-3" v-if="props.showMoreBtn">
+    <div class="d-flex justify-content-end my-3" v-if="props?.showMoreBtn">
       <router-link to="/job" class="btn btn-primary"
         >View more jobs</router-link
       >
     </div>
     <div class="row">
-      <template v-if="jobs.length">
+      <template v-if="jobs?.length">
         <div class="col-sm-12 col-md-4" v-for="(job, index) in jobs">
           <Card
             :id="job.id"
@@ -83,12 +91,12 @@ const handleJobDescription = (description: string) => {
         </div>
       </template>
     </div>
-    <div class="d-flex justify-content-center mt-3" v-if="props.showMoreBtn">
+    <div class="d-flex justify-content-center mt-3" v-if="props?.showMoreBtn">
       <router-link to="/job" class="btn border">View more jobs</router-link>
     </div>
     <div
       class="d-flex justify-content-center w-100"
-      v-if="props.showPagination"
+      v-if="props?.showPagination"
     >
       <Bootstrap5Pagination
         :data="paginator"

@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useRoute, useRouter } from "vue-router";
 import useJobSubmitter from "../composables/useJobSubmitter";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { JobForm } from "../models";
 import Alert from "./Alert.vue";
+import getJob from "../composables/getJob";
 
 interface Select {
   value: string;
@@ -10,6 +12,7 @@ interface Select {
 }
 
 const form = ref<JobForm>({
+  id: "",
   business: "",
   title: "",
   type: "",
@@ -24,6 +27,30 @@ const form = ref<JobForm>({
 const isSubmitting = ref<boolean>(false);
 const alertType = ref<string>("success");
 const message = ref<string>("");
+const route = useRoute();
+const router = useRouter();
+
+const prefillForm = (payload: JobForm) => {
+  form.value.id = payload.id;
+  form.value.business = payload.business;
+  form.value.description = payload.description;
+  form.value.level = payload.level;
+  form.value.location = payload.location;
+  form.value.permit = payload.permit;
+  form.value.salary = payload.salary as any;
+  form.value.title = payload.title;
+  form.value.type = payload.type;
+  form.value.url = payload.url;
+};
+
+const id: any = route.query?.id;
+
+onMounted(async () => {
+  if (id) {
+    const res = await getJob(id);
+    prefillForm(res);
+  }
+});
 
 const jobTypes = ref<Select[]>([
   {
@@ -60,9 +87,15 @@ const submit = async () => {
   const submitted = await useJobSubmitter(form.value);
   isSubmitting.value = false;
 
+  if (submitted && id) {
+    router.push(`/job/${id}`);
+  }
+
   if (submitted) {
     alertType.value = "success";
-    message.value = "Job submitted successfully";
+    message.value = id
+      ? "Job updated successfully"
+      : "Job submitted successfully";
     form.value.business = "";
     form.value.description = "";
     form.value.level = "";
@@ -90,7 +123,7 @@ const submit = async () => {
       >
     </p>
   </div>
-  <div v-if="message.length">
+  <div v-if="message?.length">
     <Alert :alert-type="alertType" :message="message" />
   </div>
   <form class="needs-validation mb-5" @submit.prevent="submit">
@@ -99,6 +132,7 @@ const submit = async () => {
         <label for="businessName" class="form-label">Business name</label>
         <input
           type="text"
+          id="business"
           class="form-control"
           placeholder="Sekani-tech company Ltd."
           v-model="form.business"
@@ -192,7 +226,7 @@ const submit = async () => {
 
       <div class="d-grid d-sm-block mt-5">
         <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
-          SUBMIT
+          {{ id ? "UPDATE" : "SUBMIT" }}
         </button>
       </div>
     </div>

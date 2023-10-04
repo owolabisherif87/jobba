@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from "path"
@@ -6,7 +7,11 @@ import path from "path"
 export default defineConfig({
   test: {
     globals: true,
-    environment: 'happy-dom'
+    name: "happy-dom",
+    environment: 'happy-dom',
+    coverage: {
+      provider: "istanbul",
+    }
   },
   resolve: {
     alias: {

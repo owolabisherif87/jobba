@@ -1,5 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
-
+body,html {
+    height: 100vh !important;
+}
 .router-link-active {
     color: #0d6efd !important;
 }

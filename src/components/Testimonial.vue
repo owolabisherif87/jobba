@@ -15,26 +15,24 @@ import TestimonialItem from "./TestimonialItem.vue";
       <div class="carousel-inner">
         <div class="carousel-item active">
           <TestimonialItem
-            name="Emmanuella Daniel"
+            name="Emmanuel Daniel"
             designation="Fullstack Developer"
-            testimonial="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit
-          reprehenderit est minus fugiat vel incidunt, cupiditate iusto quasi
-          veniam ducimus. Lorem ipsum dolor sit amet consectetur, adipisicing
-          elit. Velit reprehenderit est minus fugiat vel incidunt, cupiditate
-          iusto quasi veniam ducimus."
-            img-ulr="hero-image.png"
+            testimonial="I would like to express my heartfelt appreciation to Jobba for their 
+            outstanding services and unwavering commitment to connecting talented individuals 
+            with exceptional job opportunities. Jobba has truly been a game-changer in the 
+            world of job searching and talent acquisition."
+            img-ulr="testimonial1.jpg"
           />
         </div>
         <div class="carousel-item">
           <TestimonialItem
-            name="Blessings Oyedika"
+            name="Nick Simeon"
             designation="Graphic Designer"
-            testimonial="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit
-          reprehenderit est minus fugiat vel incidunt, cupiditate iusto quasi
-          veniam ducimus. Lorem ipsum dolor sit amet consectetur, adipisicing
-          elit. Velit reprehenderit est minus fugiat vel incidunt, cupiditate
-          iusto quasi veniam ducimus."
-            img-ulr="hero-image.png"
+            testimonial="Jobba's user-friendly platform and intuitive interface have made the job 
+            search process not only efficient but also enjoyable. Their extensive database of job listings, 
+            tailored recommendations, and helpful filters have made it 
+            significantly easier for me to find the perfect job that aligns with my skills, interests, and career goals."
+            img-ulr="testimonial2.jpg"
           />
         </div>
       </div>

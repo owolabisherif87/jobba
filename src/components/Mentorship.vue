@@ -19,7 +19,9 @@
         session, to help you get started.
       </p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <router-link to="/about" class="btn btn-primary btn-lg px-4 me-sm-3"
+        <router-link
+          to="/mentorship-signup"
+          class="btn btn-primary btn-lg px-4 me-sm-3"
           >Sign up for mentorship</router-link
         >
       </div>

@@ -14,6 +14,7 @@ import Newsletter from "../components/Newsletter.vue";
     :show-header="false"
     :show-more-btn="false"
     :show-pagination="true"
+    :limit="false"
   />
 
   <Newsletter />

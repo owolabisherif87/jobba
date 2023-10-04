@@ -34,6 +34,7 @@ export interface Job {
 
 
 export interface JobForm {
+  id?: string,
   business: string
   title: string
   type: string
